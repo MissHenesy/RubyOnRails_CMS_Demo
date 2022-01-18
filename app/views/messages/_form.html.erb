@@ -1,0 +1,10 @@
+<%= simple_form_for(@message, remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+  <div class="modal-body">
+    <%= f.input :name %>
+    <%= f.input :body %>
+  </div>
+
+  <div class="modal-footer">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>

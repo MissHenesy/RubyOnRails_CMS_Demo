@@ -1,0 +1,70 @@
+<%= simple_form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this graph from being saved:</h2>
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-actions">
+    <%= f.submit "Save Post", class: "btn btn-primary btn-lg" %>
+    <% if f.object.publish_date.blank? %>
+      <%= f.submit "Save and Publish", name: "save_and_publish", class: "btn btn-success btn-lg" %>
+    <% end %>
+  </div>
+  <div class="form-inputs">
+    <%= image_tag current_user.avatar.thumb.url, :alt => "Hero Photo" %>
+    <strong>By:&nbsp;</strong><%= current_user.name %> |
+    <strong>Publish Date:</strong>
+    <%= f.object.publish_date.blank? ? "<i>Not Yet Published</i>".html_safe : " | #{f.object.publish_date}" %>
+
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :lookup_post_type_id,
+        label: 'Post Type',
+        collection: LookupPostType.order(:name),
+        include_blank: '-- Select Post Type --',
+        required: true %>
+    <%= f.input :body, as: :rich_text_area, label: 'Body', placeholder: 'Text goes here' %>
+    <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id } %>
+  </div>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div id="divPullQuotes" class="col-md-6">
+        <h3>Pull Quotes</h3>
+        <p>Create pull quotes for highlights from your post</p>
+        <%= render 'form_pull_quotes', form: f %>
+        <br />
+        <div class="links">
+          <%= link_to_add_association 'Add Pull Quote',
+                f,
+                :pull_quotes,
+                class: "btn btn-sm btn-secondary" %>
+        </div>
+      </div>
+      <div id="divImageLists" class="col-md-6">
+       <h3>Image Lists</h3>
+       <p>Create image lists to include with your post</p>
+       <%= render 'form_image_lists', form: f %>
+       <br />
+       <div class="links">
+         <%= link_to_add_association 'Add Image List',
+               f,
+               :image_lists,
+               class: "btn btn-sm btn-secondary" %>
+       </div>
+     </div>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div class="form-actions">
+    <%= f.submit "Save Post", class: "btn btn-primary btn-lg" %>
+    <% if f.object.publish_date.blank? %>
+      <%= f.submit "Save and Publish", name: "save_and_publish", class: "btn btn-success btn-lg" %>
+    <% end %>
+  </div>
+<% end %>

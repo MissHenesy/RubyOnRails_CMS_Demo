@@ -1,0 +1,156 @@
+/* Page Styles */
+body {
+  font-family: 'Tahoma' !important;
+}
+p {
+  font-size: 125%;
+}
+a {
+  color: green;
+}
+h1, h2, h3, h4, h5 {
+  margin-bottom: 1.5rem !important;
+}
+img {
+  margin: 0.5rem 1.5rem;
+}
+/* Carousel */
+#divPostShowPage .carousel.slide {
+  display: inline-block;
+  width: 800px;
+  height: 400px;
+  margin-bottom: 5rem;
+}
+#divPostShowPage .carousel-inner > .carousel-item > img {
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+#divPostShowPage .carousel .carousel-control-prev,
+  #divPostShowPage .carousel .carousel-control-next {
+  // align-item: flex-start;
+  //top: 90px;
+}
+#divPostShowPage .carousel .carousel-indicators {
+  // align-item: flex-start;
+  //top: 350px;
+}
+#divPostShowPage .carousel .img-caption {
+  //align-item: flex-start;
+  //top: 50px;
+}
+
+
+/* Navbar Styles */
+.container-fluid {
+  padding-top: 25px;
+}
+.navbar {
+  font-family: 'proximaNovaBold', sans-serif !important;
+  font-size: 120%;
+}
+.navbar img {
+  margin: 0;
+}
+.navbar-brand {
+  padding-left: 25px;
+}
+.navbar ul li:not(:last-child) {
+    border-right:1px solid grey;
+    margin-right:12px;
+    padding-right:12px;
+}
+.nav-link.disabled {
+  color: #fff !important;
+}
+li.nav-item {
+  display: inline-block;
+  text-align: center;
+}
+
+/* Devise Styles */
+.devise {
+  font-family: "Montserrat Semi Bold", sans-serif;
+}
+
+.devise .card-body .form-group {
+  margin-bottom: 25px;
+}
+
+/* Custom Image Styles */
+.medium-img {
+  width: 600px;
+}
+
+/*.left-img {
+  display: block;
+  float: left;
+  margin-right: 1.5rem;
+}*/
+
+/* Custom Form Styles */
+.form-group {
+  margin: 1.5rem 0px;
+}
+.field .form-group select {
+  width: 100%;
+  height: 35px;
+  line-height: 1.5;
+  padding: .375rem .75rem;
+  background-color: #fafafa;
+}
+.card-body {
+  background-color: cornsilk;
+}
+.btn-primary {
+  background-color: #3032ae !important;
+  border-color: #000 !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #3f3a3a !important;
+    border-color: #000 !important; /*set the color you want here*/
+}
+.form-inputs label {
+  font-weight: bold;
+}
+.form-actions {
+  margin: 1.0rem 0;
+}
+.jumbotron blockquote {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  width: 500px;
+  margin: 0.25em 0;
+  padding: 0.25em 40px;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+}
+.jumbotron blockquote:before {
+  display: block;
+  content: "\201C";
+  font-size: 80px;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  color: #7a7a7a;
+}
+.jumbotron blockquote cite {
+color: #999999;
+font-size: 14px;
+display: block;
+margin-top: 5px;
+}
+.jumbotron blockquote cite:before {
+content: "\2014 \2009";
+}
+abbr, accronym {
+  /* Override simple_form's terrible asterisk styling */
+  border-bottom: 0px; /*try adding !important  after 0px if doesn't work*/
+  text-decoration: none !important;
+  color: #ff0000;
+}

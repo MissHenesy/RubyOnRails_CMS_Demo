@@ -1,0 +1,16 @@
+<div class="nested-fields">
+  <%= f.input :title,
+        label: 'Image Item Title',
+        required: true %>
+  <%= f.input :caption,
+        label: 'Image Item Caption / Description' %>
+
+  <%= image_tag(f.object.list_image.small.url) if f.object.list_image? %>
+  <%= f.file_field :list_image,
+      label: 'List Image' %>
+<br /><br />
+<%= link_to_remove_association "Delete Image List Item",
+      f,
+      class: "btn btn-sm btn-danger" %>
+<hr />
+</div>

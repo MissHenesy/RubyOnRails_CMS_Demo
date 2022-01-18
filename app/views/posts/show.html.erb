@@ -1,0 +1,72 @@
+<div id="divPostShowPage" class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @post.title %></h1>
+    <hr class="my-4" />
+    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-secondary" %>
+    <%= link_to 'Delete',
+              @post,
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-danger" %>
+    <%= link_to 'Back', posts_path, class: "btn btn-secondary btn-dark" %>
+    <hr class="my-4" />
+    <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @post.description %>
+    </p>
+    <p>
+      <%= image_tag @post.user.avatar.thumb.url, :alt => "Hero Photo" %>
+      <strong>By:</strong>&nbsp;<%= @post.user.name %> |
+      <strong>Published:</strong>&nbsp;<%= @post.publish_date ? @post.publish_date : "Not Yet Published" %>
+    </p>
+    <p>
+      <strong>Post Type:</strong>
+      <%= @post.lookup_post_type.name %>
+    </p>
+    <p>
+      <strong>Body:</strong>
+      <%= @post.body %>
+    </p>
+    <% if @pull_quotes.size > 0 %>
+      <p>
+        <strong>Pull Quotes:</strong>
+        <% @pull_quotes.each do |pq| %>
+          <blockquote><%= pq.quote %></blockquote>
+        <% end %>
+      </p>
+    <% end %>
+
+    <% if @image_lists.size > 0 %>
+        <p><strong>Image Lists:</strong></p>
+        <% @image_lists.each do |il| %>
+          <% if @image_list_items.size > 0 %>
+            <%
+              img_hash = []
+              @image_list_items.each do |i|
+                img_hash.push({ :title => "#{i.title}",
+                  :caption => "#{i.caption}",
+                  :image_url => "#{i.list_image.medium.url}" })
+              end
+            %>
+            <p><strong><%= il.title %></strong><p>
+            <p><%= "Description: #{il.caption}" %></p>
+            <%= carousel_for(img_hash) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <hr class="my-4" />
+    <br />
+    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-secondary" %>
+    <%= link_to 'Delete',
+              @post,
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-danger" %>
+    <%= link_to 'Back', posts_path, class: "btn btn-secondary btn-dark" %>
+  </div>
+</div>

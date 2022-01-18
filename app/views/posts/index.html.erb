@@ -1,0 +1,45 @@
+<div id="divPostsIndexPage" class="container">
+  <h1><%= "#{current_user.first_name}'s Posts" %></h1>
+      <hr />
+      <br />
+      <% if @posts.blank? %>
+        <p>
+          Looks like your pot is empty. Time to cook up some fresh content! &nbsp;&nbsp;
+          <%= link_to 'Start A New Post', new_post_path, class: "btn btn-primary" %>
+        </p>
+        <%= image_tag "/assets/site_images/empty_pot.jpg", :alt => "Empty Pot", class: "medium-img" %>
+      <% else %>
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>Title</th>
+              <th>Publish Date</th>
+              <th>Post Type</th>
+              <th>Created By</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |p| %>
+              <tr>
+                <td><%= link_to p.title, p, class: "link-dark" %></td>
+                <td><%= p.publish_date %></td>
+                <td><%= p.lookup_post_type.name %></td>
+                <td><%= p.user.email %></td>
+                <td><%= link_to "Edit",
+                          edit_post_path(p),
+                          class: "btn btn-sm btn-secondary" %>
+                    &nbsp;
+                    <%= link_to "Delete",
+                              p, method: :delete,
+                              data: { confirm: "Are you sure?" },
+                              class: "btn btn-sm btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to 'Start A New Post', new_post_path, class: "btn btn-primary" %>
+      <% end %>
+</div>

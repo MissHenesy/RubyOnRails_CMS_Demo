@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  publish_date: 2022-01-16
+  lookup_post_type: one
+  user: one
+
+two:
+  title: MyString
+  description: MyText
+  publish_date: 2022-01-16
+  lookup_post_type: two
+  user: two

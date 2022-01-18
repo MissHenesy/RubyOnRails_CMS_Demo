@@ -1,0 +1,29 @@
+<div class="nested-fields">
+  <%= f.input :title,
+        label: 'Image List Title',
+        required: true %>
+  <%= f.input :caption,
+        label: 'Image List Caption / Description' %>
+  <%= f.input :image_list_type,
+        label: 'Image List Type',
+        collection: get_image_list_types,
+        include_blank: '-- Select Image Type --',
+        required: true %>
+  <br />
+  <%= link_to_remove_association "Delete Image List",
+        f,
+        class: "btn btn-sm btn-danger" %>
+  <hr />
+  <div id="divImageItems" class="col-md-6">
+    <h3>Images</h3>
+    <p>Upload the images that go with this list</p>
+    <%= render 'form_image_list_items', form: f %>
+    <br /><br />
+    <div class="links">
+      <%= link_to_add_association 'Add Image',
+            f,
+            :image_list_items,
+            class: "btn btn-sm btn-secondary" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<% il_counter = 0 %>
+<%= form.simple_fields_for :image_lists do |il_form| %>
+  <h4><%= "Image List Form #{ il_counter += 1 }" %></h4>
+  <%= render "image_list_fields", f: il_form %>
+<% end %>

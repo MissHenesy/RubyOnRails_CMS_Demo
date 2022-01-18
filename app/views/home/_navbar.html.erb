@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to image_tag("/assets/site_images/nav_logo.png", :alt => "ATK Editor's Home Page"), root_path, :class => "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">&nbsp;</li>
+          <li class="nav-item dropdown">
+              <%= link_to "Greetings, #{user_greeting_name}!",
+                "#",
+                :id => "navbarUserLink",
+                class: "nav-link dropdown-toggle",
+                :role => :button,
+                "data-bs-toggle" => "dropdown",
+                "aria-expanded" => "true"
+              %>
+              <ul class="dropdown-menu" aria-labelledby="navbarUserLink">
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </ul>
+              <%= image_tag(current_user.avatar.thumb.url, :alt => "Greetings, #{user_greeting_name}") if current_user.avatar? %>
+          </li>
+          <li class="nav-item dropdown">
+            <%= link_to "My Posts",
+                  "javascript:void(0)",
+                  :id => "navbarPostsLink",
+                  class: "nav-link dropdown-toggle",
+                  :role => :button,
+                  "data-bs-toggle" => "dropdown",
+                  "aria-expanded" => "true"
+            %>
+            <ul class="dropdown-menu" aria-labelledby="navbarPostsLink">
+              <%= link_to "Start New Post", new_post_path, class: "dropdown-item" %>
+              <%= link_to "View My Posts", posts_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "About Us", home_about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Create Account", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+    </div>
+  </div>
+</nav>

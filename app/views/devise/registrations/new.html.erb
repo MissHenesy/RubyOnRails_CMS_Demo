@@ -1,0 +1,62 @@
+<div class="card devise">
+  <div class="card-header">
+      <h4>Create Account</h4>
+  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field form-group">
+        <%= f.text_field :first_name,
+              placeholder: "First Name",
+              autofocus: true,
+              autocomplete: "first name",
+              required: true,
+              class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.text_field :last_name,
+              placeholder: "Last Name",
+              autofocus: true,
+              autocomplete: "last name",
+              required: true,
+              class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.email_field :email,
+              placeholder: "Email",
+              autofocus: true,
+              autocomplete: "email",
+              required: true,
+              class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= image_tag(@user.avatar.url) if @user.avatar? %>
+        <%= f.file_field :avatar,
+              class: "form-control" %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+      <div class="field form-group">
+        <%= f.password_field :password,
+              placeholder: "Password",
+              autocomplete: "new-password",
+              required: true,
+              class: "form-control" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+      <div class="field form-group">
+        <%= f.password_field :password_confirmation,
+              placeholder: "Password Confirmation",
+              autocomplete: "new-password",
+              required: true,
+              class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create Account", class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+<div>
+<%= render "devise/shared/links" %>

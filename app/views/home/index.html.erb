@@ -1,0 +1,21 @@
+<h1>Welcome to the ATK Writer's Pad</h1>
+
+<%= image_tag "/assets/site_images/writing_pad.jpg", :alt => "The ATK Writer's Pad", class: "medium-img", align: "left" %>
+
+<% if user_signed_in? %>
+  <p>
+    Hello, <%= current_user.first_name %>, it's a pleasure to see you again!
+  </p>
+  <p>
+    Go ahead and visit your <%= link_to 'posts', posts_path %>.
+  </p>
+<% else %>
+  <p>
+    <br /><br /><br />
+    <%= link_to "Sign In", new_user_session_path, class: "btn btn-secondary btn-lg" %><br />
+  </p>
+  <p>
+    <%= link_to "Create Account", new_user_registration_path  %>
+  </p>
+
+<% end %>

@@ -1,0 +1,5 @@
+<% pq_counter = 0 %>
+<%= form.simple_fields_for :pull_quotes do |pq_form| %>
+  <h4><%= "Pull Quote Form #{ pq_counter += 1 }" %></h4>
+  <%= render "pull_quote_fields", f: pq_form %>
+<% end %>
