@@ -13,8 +13,6 @@ class PostsController < ApplicationController
     @post ||= set_post
     @pull_quotes ||= @post.pull_quotes
     @image_lists ||= @post.image_lists
-    # post.image_lists.includes([:image_list_items])
-    # @image_list_items ||= @image_lists.includes([:image_list_items])
     @image_list_items = @post.image_list_items
   end
 
@@ -36,7 +34,6 @@ class PostsController < ApplicationController
     @post ||= set_post
     @pull_quotes = @post.pull_quotes
     @image_lists = @post.image_lists
-    #@image_list_items = @post.image_list_items if @image_lists.size > 1
   end
 
   # POST /posts or /posts.json
@@ -85,7 +82,7 @@ class PostsController < ApplicationController
 
   def correct_user
     @user = current_user.posts
-    redirect_to posts_path, notice: "Hey, You're Not Authorized To View/Edit Other Editor's Post!" if @user.nil?
+    redirect_to posts_path, notice: "Hey, You're Not Authorized To View/Edit Other Editors' Posts!" if @user.nil?
   end
 
   private
