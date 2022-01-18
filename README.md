@@ -1,4 +1,4 @@
-# RubyOnRails_CMS_Demo
+# RubyOnRails CMS Demo
 A simple, homemade Content Management System using Ruby on Rails (Ruby 2.6.3 / Rails 6.1.4)
 
 This CMS can do more than just render paragraphs! It features:
